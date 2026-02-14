@@ -76,7 +76,7 @@ You should see `deepseek-r1:8b` and `nomic-embed-text`.
 
 Example for 14B: `ollama pull deepseek-r1:14b`, then in `app.py` set `OLLAMA_MODEL = "deepseek-r1:14b"`.
 
-### 4. Google API key (only for Cloud / Power mode)
+### 5. Google API key (only for Cloud / Power mode)
 
 - Get an API key from [Google AI Studio](https://aistudio.google.com/apikey).
 - Either set it in the app sidebar when "Cloud (Power Mode)" is selected, or set the env var:
