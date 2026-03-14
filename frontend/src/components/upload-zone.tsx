@@ -170,7 +170,7 @@ export function UploadZone({ onUploadSuccess }: UploadZoneProps) {
           </h2>
           <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
             Chat with your PDF using RAG or extract structured data with a
-            custom schema — powered by Qwen &amp; Gemini&nbsp;2.0&nbsp;Flash.
+            custom schema — powered by Qwen3 &amp; Gemini&nbsp;2.0&nbsp;Flash.
           </p>
         </div>
 

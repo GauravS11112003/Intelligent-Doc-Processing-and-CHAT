@@ -335,7 +335,7 @@ export function ExtractPanel({ documentId }: ExtractPanelProps) {
               : "bg-purple-500/10 text-purple-600"
           }`}>
             <Sparkles className="size-3" />
-            {isCloud ? "Gemini 2.0 Flash" : "Qwen 2.5"}
+            {isCloud ? "Gemini 2.0 Flash" : "Qwen3"}
           </div>
           {activeTemplate && (
             <Badge variant="secondary" className="text-[10px] h-5 gap-1">

@@ -473,7 +473,7 @@ export function ChatPanel({ documentId }: ChatPanelProps) {
             }`}
           >
             <Sparkles className="size-3" />
-            {isCloud ? "Gemini 2.0 Flash" : "Qwen 2.5"}
+            {isCloud ? "Gemini 2.0 Flash" : "Qwen3"}
           </div>
 
           {messages.length > 0 && (
@@ -593,7 +593,30 @@ export function ChatPanel({ documentId }: ChatPanelProps) {
                   >
                     {msg.role === "assistant" ? (
                       <div className="chat-markdown">
-                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                        <ReactMarkdown
+                          components={{
+                            code({ className, children, ...props }: any) {
+                              const match = /language-(\w+)/.exec(className || "");
+                              if (match && match[1] === "thinking") {
+                                return (
+                                  <div className="bg-muted/40 border-l-2 border-primary/40 pl-3 pr-2 py-2 mb-3 rounded-r-md text-[11px] text-muted-foreground italic font-mono whitespace-pre-wrap">
+                                    <div className="font-semibold mb-1 flex items-center gap-1.5 not-italic text-foreground/70">
+                                      <Bot className="size-3" /> Model Thinking Process
+                                    </div>
+                                    {String(children).replace(/\n$/, "")}
+                                  </div>
+                                );
+                              }
+                              return (
+                                <code className={className} {...props}>
+                                  {children}
+                                </code>
+                              );
+                            },
+                          }}
+                        >
+                          {msg.content.replace(/<think>\n?/gi, "```thinking\n").replace(/<\/think>\n?/gi, "```\n\n")}
+                        </ReactMarkdown>
                       </div>
                     ) : (
                       <span className="whitespace-pre-wrap">{msg.content}</span>
